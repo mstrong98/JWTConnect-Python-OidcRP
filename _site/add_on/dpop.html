@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Demonstration of Proof-of-possession &#8212; oidcrp 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Proof Key for Code Exchange" href="pkce.html" />
+    <link rel="prev" title="OIDCRP add on documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="demonstration-of-proof-of-possession">
+<span id="dpop"></span><h1>Demonstration of Proof-of-possession<a class="headerlink" href="#demonstration-of-proof-of-possession" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>In the traditional mechanism, API access is allowed only if the access
+token presented by the client application is valid. However, if a
+mechanism of PoP (Proof of Possession) such as DPoP is employed,
+the API implementation additionally checks whether the client
+application presenting the access token is the valid owner of the
+access token (= whether the client application is the same one that
+the access token has been issued to). If the client is not the valid
+owner of the access token, the API access is rejected.</p>
+<p>The <a class="reference external" href="https://datatracker.ietf.org/doc/draft-ietf-oauth-dpop/">DPOP Internet draft</a> describes a mechanism for sender-constraining
+OAuth 2.0 tokens via a proof-of-possession mechanism on the application
+level. This mechanism allows for the detection of replay attacks with
+access and refresh tokens.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h2>
+<p>The only thing you can chose is the signing algorithms.
+There are no default algorithms.</p>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h2>
+<p>What you have to do is to add a <em>dpop</em> section to an <em>add_ons</em> section
+in a client configuration.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;add_ons&#39;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;dpop&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="s2">&quot;oidcrp.oauth2.add_on.dpop.add_support&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kwargs&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;signing_algorithms&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ES256&quot;</span><span class="p">,</span> <span class="s2">&quot;ES512&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">OIDCRP add on documentation</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">OIDCRP add on documentation</a></li>
+      <li>Next: <a href="pkce.html" title="next chapter">Proof Key for Code Exchange</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2018, Roland Hedberg.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/add_on/dpop.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
